@@ -1,4 +1,4 @@
-package alpacaPojo;
+package alpaca;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -15,15 +15,15 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import alpacaPojo.AccountsPojo;
-import alpacaPojo.AssetsPojo;
-import alpacaPojo.ClockPojo;
-import alpacaPojo.LastQuote;
-import alpacaPojo.LastQuoteV2;
-import alpacaPojo.LastTrade;
-import alpacaPojo.OrdersPojo;
-import alpacaPojo.PositionsPojo;
-import alpacaPojo.TimeframePojo;
+import alpaca.AccountsPojo;
+import alpaca.AssetsPojo;
+import alpaca.ClockPojo;
+import alpaca.LastQuote;
+import alpaca.LastQuoteV2;
+import alpaca.LastTrade;
+import alpaca.OrdersPojo;
+import alpaca.PositionsPojo;
+import alpaca.TimeframePojo;
 
 public class AlpacaApiCaller extends AlpacaRestParams {
 	protected String paperUrl;

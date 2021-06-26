@@ -1,6 +1,6 @@
-package alpacaPojo;
-import alpacaPojo.LastTradePojo;
-import alpacaPojo.LastTradePojoV2;
+package alpaca;
+import alpaca.LastTradePojo;
+import alpaca.LastTradePojoV2;
 
 public class LastTradeV2 {
 	private String symbol;

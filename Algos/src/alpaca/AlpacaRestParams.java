@@ -1,4 +1,4 @@
-package alpacaPojo;
+package alpaca;
 
 public class AlpacaRestParams {
 	protected String alpacaKey;

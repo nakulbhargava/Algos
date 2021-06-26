@@ -1,6 +1,6 @@
-package alpacaPojo;
-import alpacaPojo.LastQuotePojo;
-import alpacaPojo.LastQuotePojoV2;
+package alpaca;
+import alpaca.LastQuotePojo;
+import alpaca.LastQuotePojoV2;
 
 public class LastQuoteV2 {
 	private String symbol;

@@ -1,4 +1,4 @@
-package alpacaPojo;
+package alpaca;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

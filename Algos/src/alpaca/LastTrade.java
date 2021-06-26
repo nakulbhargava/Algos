@@ -1,10 +1,10 @@
-package alpacaPojo;
-import alpacaPojo.LastQuotePojo;
+package alpaca;
+import alpaca.LastTradePojo;
 
-public class LastQuote {
+public class LastTrade {
 	private String status;
 	private String symbol;
-	private LastQuotePojo last;
+	private LastTradePojo last;
 	@Override
     public String toString() {
         return "{" +
@@ -25,10 +25,10 @@ public class LastQuote {
 	public void setSymbol(String symbol) {
 		this.symbol = symbol;
 	}
-	public LastQuotePojo getLast() {
+	public LastTradePojo getLast() {
 		return last;
 	}
-	public void setLast(LastQuotePojo last) {
+	public void setLast(LastTradePojo last) {
 		this.last = last;
 	}
 }
