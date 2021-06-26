@@ -15,17 +15,15 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import alpaca.AccountsPojo;
-import alpaca.AssetsPojo;
-import alpaca.ClockPojo;
-import alpaca.LastQuote;
-import alpaca.LastQuoteV2;
-import alpaca.LastTrade;
-import alpaca.OrdersPojo;
-import alpaca.PositionsPojo;
-import alpaca.TimeframePojo;
-
-public class AlpacaApiCaller extends AlpacaRestParams {
+public class AlpacaApiCaller{
+	protected String alpacaKey;
+	protected String secretId;
+	protected String alpacaKeyValue;
+	protected String secretIdValue;
+	protected String headerContentType;
+	protected String headerContentTypeValue;
+	protected String alpacaKeyRealTime;
+	protected String secretIdRealTime;
 	protected String paperUrl;
 	protected String realtimeUrl;
 	protected String activeVersion;
@@ -41,7 +39,14 @@ public class AlpacaApiCaller extends AlpacaRestParams {
 			String headerContentType, String headerContentTypeValue, String alpacaKeyRealTime, String secretIdRealTime, String paperUrl, String realtimeUrl,
 			String activeVersion, String inactiveVersion, String ordersEndpoint, String accountEndpoint,
 			String lastQuoteEndpoint, String lastTradeEndpoint, String positionsEndpoint, String assetsEndpoint, String clockEndpoint) {
-		super(alpacaKey, secretId, alpacaKeyValue, secretIdValue, headerContentType, headerContentTypeValue, alpacaKeyRealTime, secretIdRealTime);
+		this.alpacaKey = alpacaKey;
+		this.secretId = secretId;
+		this.alpacaKeyValue = alpacaKeyValue;
+		this.secretIdValue = secretIdValue;
+		this.headerContentType = headerContentType;
+		this.headerContentTypeValue = headerContentTypeValue;
+		this.alpacaKeyRealTime = alpacaKeyRealTime;
+		this.secretIdRealTime = secretIdRealTime;								
 		this.paperUrl = paperUrl;
 		this.realtimeUrl = realtimeUrl;
 		this.activeVersion = activeVersion;
@@ -333,9 +338,9 @@ public class AlpacaApiCaller extends AlpacaRestParams {
 				.build();
 		HttpResponse<String> response = client.send(request,
 				HttpResponse.BodyHandlers.ofString());
-//		System.out.println(response.body());
-//		System.out.println(response.statusCode());
-//		System.out.println(response.request());
+		//		System.out.println(response.body());
+		//		System.out.println(response.statusCode());
+		//		System.out.println(response.request());
 		if(response.statusCode() != 200) {
 			System.out.println("Sell Error:" + response.body()); 
 			return null;
@@ -837,7 +842,7 @@ public class AlpacaApiCaller extends AlpacaRestParams {
 	}
 	public SnapshotPojo[] getSnapshots(String symbols) throws IOException, InterruptedException {
 		HttpClient client = HttpClient.newHttpClient();
-		
+
 		// Create HTTP request object
 		HttpRequest request = HttpRequest.newBuilder()
 				.uri(URI.create(realtimeUrl + activeVersion + "/stocks/snapshots?symbols=" + symbols))
@@ -870,11 +875,11 @@ public class AlpacaApiCaller extends AlpacaRestParams {
 	public <T> T[] getJsonObjectArray(String jsonString, Class objectClass) throws JsonParseException, JsonMappingException, IOException{
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-//		mapper.configure(DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY, true);
+		//		mapper.configure(DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY, true);
 		T[]  responseObject = (T[]) mapper.readValue(jsonString,  objectClass);
 		return responseObject;
 	}
-	
+
 	public <T> T getJsonObjectMap(String jsonString, Class objectClass) throws JsonParseException, JsonMappingException, IOException{
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
