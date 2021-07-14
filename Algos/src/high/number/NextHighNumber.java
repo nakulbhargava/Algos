@@ -27,10 +27,10 @@ public class NextHighNumber {
 	}
 
 	//Function to find the next highest number
-	static void calculateNextHighNumber(char[] currentNumber) {
+	static char[] calculateNextHighNumber(char[] currentNumber) {
 		if (currentNumber == null) {
 			System.out.println("Cannot execute on null number.");
-			return;
+			return null;
 		}
 		int length = currentNumber.length;
 		int i;
@@ -61,18 +61,20 @@ public class NextHighNumber {
 			//Need to sort the rest of the array from i to the length of the array
 			Arrays.sort(currentNumber, i, length);
 		}
+		return currentNumber;
 	}
 
 	// function to swap two digit in the array
-	static void swap(char digit[], int i, int j)
+	static char[] swap(char digit[], int i, int j)
 	{
 		int length = digit != null? digit.length: -1;
 		if(i > length || j > length) {
 			System.out.println("Invalid Input Array Passed.");
-			return;
+			return null;
 		}
 		char temp = digit[i];
 		digit[i] = digit[j];
 		digit[j] = temp;
+		return digit;
 	}
 }
