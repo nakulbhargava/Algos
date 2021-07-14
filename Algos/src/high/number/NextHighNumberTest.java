@@ -10,7 +10,7 @@ class NextHighNumberTest {
 	char[] number;
 	@BeforeEach
 	void setUp() throws Exception {
-		number  = new char[]{ '1', '2', '3'};
+		number  = new char[]{ '1', '2', '3', '4'};
 	}
 
 	@Test
